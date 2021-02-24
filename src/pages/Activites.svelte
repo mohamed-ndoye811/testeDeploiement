@@ -1,6 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
+  import {gsap, Expo} from 'gsap';
   import ActivityPage from "./activites/ActivityPage.svelte";
   import activites from "../utils/activites.js";
+
+  onMount(() => {
+    gsap.from(".activityItem", {
+      y: 100,
+      duration: 0.8,
+      opacity: 0,
+      ease: Expo.easeOut,
+      stagger: 0.1
+    })
+  })
 
   let pageActivite = "";
 
@@ -41,6 +53,7 @@
     margin-bottom: 2.5vh;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.2);
+    
 
     p {
       position: absolute;
@@ -48,11 +61,13 @@
       text-transform: uppercase;
       font-weight: 600;
       opacity: 0;
+      transition-duration: 0.4s;
     }
 
     img {
       height: 100%;
       width: 100%;
+      transition-duration: 0.4s;
     }
 
     &:hover {
