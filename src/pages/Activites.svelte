@@ -10,7 +10,7 @@
       duration: 0.8,
       opacity: 0,
       ease: Expo.easeOut,
-      stagger: 0.1
+      stagger: 0.05
     })
   })
 
