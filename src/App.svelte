@@ -192,19 +192,45 @@
 
   @media (min-width: 768px) {
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 75%;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
 
       & #headerLogo {
         height: 8vh;
-        cursor: pointer;
       }
+
+      .nav {
+      width: 55%;
+
+      &__link {
+        font-size: 1.3vw;
+      }
+    }
+
+    .adminPannel {
+      visibility: hidden;
+      background-color: $secondary-color-100;
+      color: $primary-color;
+      position: absolute;
+      right: 0;
+      top: 70%;
+      z-index: 10;
+      width: 200px;
+      height: 70px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        font-size: 1.3vw;
+      }
+    }
+
+    .pannelVisible {
+      visibility: visible;
+    }
     }
   }
 </style>
