@@ -1,16 +1,13 @@
 <script>
-  import { onMount } from "svelte";
-
   let informationImportante = "Information importante!";
+  let barreAnnonce;
 
   let texteInformationImportante = (
-    informationImportante.toUpperCase() + " - "
-  ).repeat(3);
-
-  onMount(() => {});
+      informationImportante.toUpperCase() + " - "
+    ).repeat(3);
 </script>
 
-<div class="infoImportante">
+<div class="infoImportante" bind:this={barreAnnonce}>
   {#each Array(3) as _}
     <span class="infoImportante__texte">
       &nbsp;{texteInformationImportante}

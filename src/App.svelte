@@ -16,6 +16,7 @@
   window.addEventListener("load", function () {
     pageSelected = "/";
   });
+  
   let actualPage;
 
   function pageSwitch(nextPage) {
