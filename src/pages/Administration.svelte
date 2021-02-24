@@ -24,17 +24,6 @@
   $secondary-color-100: #ffd700;
   $secondary-color-200: #e2c000;
 
-  :global(.background) {
-    background-image: url("./img/Toulon-2.jpg");
-    filter: blur(5px);
-    background-clip: border-box;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-    opacity: 0.3;
-  }
-
   .selectionContainer {
     height: 80vh;
     overflow-y: scroll;

@@ -1,4 +1,18 @@
 <script>
+	import { onMount } from 'svelte';
+  import {gsap,Expo} from "gsap";
+
+  onMount(() => {
+    gsap.from([".bsvInfo", ".inscriptionInfo"], {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      ease: Expo.easeOut,
+      stagger: 0.1
+    })
+  })
+
+  
 </script>
 
 <div class="bsvContainer">

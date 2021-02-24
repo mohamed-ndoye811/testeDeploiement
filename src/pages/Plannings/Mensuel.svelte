@@ -1,6 +1,8 @@
 <script>
+	import { onMount } from 'svelte';
   // Import des éléments + de la db
   import DetailsActivites from "./../../components/DetailsActivites.svelte";
+  import {gsap, Expo} from "gsap";
 
   let dates = []; //Tableau des dates
   export let db;
@@ -27,6 +29,15 @@
     ];
     return days[xx.getDay()] + " " + xx.getDate().toString(); // the Day
   };
+
+  onMount(() => {
+    gsap.from("monthContainer", {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+      stagger: 0.2
+    })
+  })
 
   let showDetails = false;
 </script>
@@ -72,38 +83,40 @@
   $secondary-color-100: #ffd700;
   $secondary-color-200: #e2c000;
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-  }
-
   .monthContainer {
-    padding: 35px;
-    border-radius: 15px;
-    height: fit-content;
+      padding: 35px;
+      border-radius: 15px;
+      height: fit-content;
 
-    h1 {
-      margin-bottom: 50px;
-      text-align: center;
-    }
+      h1 {
+        margin-bottom: 50px;
+        text-align: center;
+      }
 
-    p {
-      margin-top: 40px;
-      font-weight: 600;
-      font-size: 1.7vw;
-      text-transform: uppercase;
-      text-align: center;
+      p {
+        margin-top: 40px;
+        font-weight: 600;
+        font-size: 5vw;
+        text-transform: uppercase;
+        text-align: center;
 
-      &:hover {
-        text-decoration: underline;
-        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      &:nth-child(even) {
+        background-color: $secondary-color-100;
+        color: $primary-color;
       }
     }
 
-    &:nth-child(even) {
-      background-color: $secondary-color-100;
-      color: $primary-color;
+  @media (min-width: 1280) {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
     }
   }
 </style>

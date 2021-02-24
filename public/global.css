@@ -22,3 +22,37 @@ body {
   top: 0;
   left: 0;
 }
+
+.background {
+  background-image: url("./img/Toulon-2.jpg");
+  filter: blur(5px);
+  background-clip: border-box;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.bouton {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 2.5vw;
+  background-color: #ffd700;
+  border-radius: 23px;
+  padding: 7px;
+  text-shadow: none;
+  cursor: pointer;
+}
+
+.bouton :hover {
+  background-color: #e2c000;
+}
+
+@media (min-width: 768px) {
+  .bouton {
+    font-size: 1vw;
+    padding: 10px;
+  }
+}

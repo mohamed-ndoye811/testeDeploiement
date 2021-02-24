@@ -1,5 +1,24 @@
 <script>
+	import { onMount } from 'svelte';
+	import { gsap, Expo } from 'gsap';
+  // Définition des variables pour la récupération des éléments
   let homeInfo, collegue, partenaires, actu;
+
+  onMount(() => {
+    gsap.from([homeInfo, collegue,partenaires], {
+      x: -200,
+      opacity: 0,
+      duration: 0.8,
+      ease: Expo.easeOut
+    })
+
+    gsap.from(actu, {
+      x: 200,
+      opacity: 0,
+      duration: 0.8,
+      ease: Expo.easeOut
+    })
+  })
 
   let actuSelected = 1;
 </script>
@@ -119,20 +138,19 @@
   $secondary-color-200: #e2c000;
 
   .accueilContainer {
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
   }
 
   .homeInfo {
-    width: 57%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
 
     &__titre {
-      font-size: 3.2vw;
+      font-size: 5vw;
       padding: 0;
       margin: 0;
     }
@@ -142,17 +160,17 @@
         content: "";
         display: inline-block;
         background-color: $secondary-color-100;
-        width: 25%;
-        height: 5px;
+        width: 25vw;
+        height: 0.75vw;
         position: relative;
-        top: -15px;
+        top: -25px;
       }
     }
 
     &__texte {
       position: relative;
-      top: -15px;
-      font-size: 1.17vw;
+      top: -25px;
+      font-size: 3vw;
       font-weight: 600;
       text-align: justify;
       text-overflow: ellipsis;
@@ -163,13 +181,15 @@
       width: fit-content;
       align-self: flex-end;
       cursor: pointer;
+      position: relative;
+      top: -20px;
     }
   }
 
   .collegues {
     position: relative;
     top: 10px;
-    width: 47vw;
+    width: 100%;
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
 
     &__titre {
@@ -228,7 +248,6 @@
   .actu {
     background-color: $secondary-color-100;
     color: $primary-color;
-    position: absolute;
     right: 0;
     top: 0px;
     border-radius: 2%;
@@ -236,7 +255,7 @@
     height: 80%;
 
     &__image {
-      background-image: url("./img/actu/images/image_1.jpg");
+      background-image: url("../../public/img/actu/images/image_1.jpg");
       border-radius: 10px 10px 0 0;
       width: 100%;
       height: 45%;
@@ -333,5 +352,179 @@
       display: flex;
       flex-direction: column;
     }
+  }
+
+  @media (min-width: 768px) {
+    .accueilContainer {
+    height: fit-content;
+    display: flex;
+  }
+
+  .homeInfo {
+    width: 55%;
+
+    &__titre {
+      font-size: 2.5vw;
+    }
+
+    &__separateur {
+      &::before {
+        width: 25%;
+        height: 5px;
+      }
+    }
+
+    &__texte {
+      position: relative;
+      top: -25px;
+      font-size: 1.1vw;
+      font-weight: 600;
+    }
+  }
+
+  .collegues {
+    top: 50px;
+    width: 55%;
+    text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
+
+    &__titre {
+      font-size: 2.5vw;
+    }
+
+    &__separateur {
+      &::before {
+        content: "";
+        display: inline-block;
+        background-color: $secondary-color-100;
+        width: 25%;
+        height: 5px;
+        position: relative;
+        top: -25px;
+      }
+    }
+
+    &__liste {
+      position: relative;
+      bottom: 35px;
+      width: 100%;
+
+      &__item {
+        a {
+          font-size: 1.1vw;
+        }
+      }
+    }
+  }
+
+  .actu {
+    position:absolute;
+    background-color: $secondary-color-100;
+    color: $primary-color;
+    right: 0;
+    top: 0px;
+    border-radius: 2%;
+    max-width: 31vw;
+    height: 80%;
+
+    &__image {
+      background-image: url("../../public/img/actu/images/image_1.jpg");
+      border-radius: 10px 10px 0 0;
+      width: 100%;
+      height: 45%;
+      overflow: hidden;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    &__selector {
+      width: 30%;
+      height: 30px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: space-evenly;
+
+      &__circle {
+        &::before {
+          content: "";
+          display: inline-block;
+          background-color: #9da895;
+          width: 1vw;
+          height: 1vw;
+          border-radius: 50%;
+          position: relative;
+          top: -20px;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &--active {
+          &::before {
+            background-color: $primary-color;
+            content: "";
+            display: inline-block;
+            width: 1vw;
+            height: 1vw;
+            border-radius: 50%;
+            position: relative;
+            top: -20px;
+          }
+        }
+      }
+    }
+
+    &__separateur {
+      &::before {
+        content: "";
+        display: inline-block;
+        background-color: $primary-color;
+        width: 25%;
+        height: 5px;
+        position: relative;
+        top: -25px;
+      }
+    }
+
+    &__titre {
+      font-size: 2.5vw;
+    }
+
+    &__texte {
+      font-size: 1.2vw;
+      font-weight: 600;
+      text-align: justify;
+      position: relative;
+      top: -25px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &__boutonPlus {
+      font-size: 1.5vw;
+      margin-top: -20px;
+      font-style: italic;
+      position: relative;
+      align-self: flex-end;
+      cursor: pointer;
+    }
+
+    &__articleContainer {
+      width: 85%;
+      position: relative;
+      left: 50%;
+      top: 3%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
   }
 </style>

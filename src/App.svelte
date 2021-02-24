@@ -11,21 +11,27 @@
   import Activites from "./pages/Activites.svelte";
   import CompteurVisite from "./components/CompteurVisite.svelte";
 
+  // Definission variable de page selectionnée
   let pageSelected = "";
 
+  // On la définie en "/" pour être sur l'acceuil lors du chargement du site
   window.addEventListener("load", function () {
     pageSelected = "/";
   });
-  
+
+  // Variable de la page actuelle affichée
   let actualPage;
 
+  // Fonction de changement de page, qui fait disparaitre celle présente pour laisser apparaitre la nouvelle
   function pageSwitch(nextPage) {
+    // Animation de disparition
     gsap.to(actualPage, {
       autoAlpha: 0,
       duration: 0.6,
       ease: Power4.easeOut,
     });
 
+    // Réapparition après un délai
     setTimeout(function () {
       gsap.to(actualPage, {
         autoAlpha: 1,
@@ -36,9 +42,11 @@
     }, 200);
   }
 
+  // Définition des variables pour la recherche des statuts et du réglement
   let pannelVisible = false;
   let adminChoix = "";
 
+  // Gestion du changement de page pour l'administration
   function redirectionAdmin(choix) {
     pageSwitch("/Administration");
     setTimeout(function () {
@@ -47,8 +55,6 @@
 
     pannelVisible = false;
   }
-
-  //console.log(actualPage);
 </script>
 
 <header>
@@ -108,21 +114,7 @@
 <style type="text/scss">
   @import "./globals.scss";
 
-  :global(.bouton) {
-    color: $primary-color;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1vw;
-    background-color: $secondary-color-100;
-    border-radius: 23px;
-    padding: 12px;
-    text-shadow: none;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $secondary-color-200;
-    }
-  }
+  
 
   .container {
     max-width: 75%;
@@ -131,7 +123,6 @@
     top: 15px;
     left: 50%;
     transform: translateX(-50%);
-    //background-color: red;
   }
 
   header {
@@ -145,7 +136,7 @@
     z-index: 2;
 
     & #headerLogo {
-      height: 8vh;
+      height: 4vh;
       cursor: pointer;
     }
 
@@ -154,13 +145,13 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      width: 50%;
+      width: 80%;
 
       &__link {
         color: $secondary-color-100;
         text-decoration: none;
         font-weight: 600;
-        font-size: 1.25vw;
+        font-size: 1.9vw;
         cursor: pointer;
       }
     }
@@ -173,8 +164,8 @@
       right: 0;
       top: 70%;
       z-index: 10;
-      width: 200px;
-      height: 70px;
+      width: 100x;
+      height: 20px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
       padding: 20px;
       border-radius: 10px;
@@ -184,7 +175,7 @@
       justify-content: space-between;
 
       p {
-        font-size: 0.8em;
+        font-size: 2.5vw;
         font-weight: 600;
         cursor: pointer;
       }
@@ -197,5 +188,23 @@
 
   .hidden {
     visibility: hidden;
+  }
+
+  @media (min-width: 768px) {
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 75%;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+
+      & #headerLogo {
+        height: 8vh;
+        cursor: pointer;
+      }
+    }
   }
 </style>
