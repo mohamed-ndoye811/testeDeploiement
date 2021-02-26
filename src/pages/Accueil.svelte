@@ -25,7 +25,7 @@
 
 <div class="accueilContainer">
   <div class="homeInfo" bind:this={homeInfo}>
-    <h3 class="homeInfo__titre">QUI SOMMES NOUS?</h3>
+    <h3 class="homeInfo__titre">QUI SOMMES?</h3>
     <span class="homeInfo__separateur" />
     <p class="homeInfo__texte">
       <b><i>Loisir et Solidarité des Retraités de TOULON et du VAR</i></b>
@@ -188,7 +188,7 @@
 
   .collegues {
     position: relative;
-    top: 10px;
+    top: -20px;
     width: 100%;
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15);
 
